@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="icon"  href="/images/logo.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="icon"  href="/images/logo.png">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/registration.css' />
+   <!-- <link rel='stylesheet' href='/stylesheets/register.css' />-->
+    <script type="text/javascript" src="/javascripts/register.js"></script>
+    
+    <title>Registration</title>
+</head>
+
+<body ng-app='myapp' ng-controller='mycontroller'>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4 offset-sm-2 offset-md-3 offset-lg-4">
+                    <h1 class="mb-3 text-center">Registration</h1>
+                    <form class="mb-3  " style="font-weight: bold;" action="">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" placeholder="Enter Name" name="" id="name" required ng-model='info.name'>
+                        </div>
+                        <div class="form-group">
+                            <label for="rollno">Rollno:</label>
+                            <input type="text" class="form-control" placeholder="Enter Roll No" name="" id="rollno" required ng-model='info.rollno'>
+                        </div>
+                        <div class="form-group">
+                            <label >Gender:</label><br>
+                            <input type="radio"  value="male" name="Gender" id="Male" required ng-model='info.gender'>
+                            <label for="Male" class="mr-3">Male</label>
+                            <input type="radio" value="female"  name="Gender" id="Female" required ng-model='info.gender'>
+                            <label for="Female">Female</label>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="poy">Passout year:</label>
+                            <!-- <input type="email" class="form-control" placeholder="Enter Branch" name="" id="branch" required> -->
+                            <select name="poy" class="form-control" ng-model='info.poy'>
+                                <option value="">Select Passout Year</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="branch">Branch:</label>
+                            <!-- <input type="email" class="form-control" placeholder="Enter Branch" name="" id="branch" required> -->
+                            <select name="Branch" class="form-control" ng-model='info.branch'>
+                                <option value="">Select Branch</option>
+                                <option value="CSE">CSE</option>
+                                <option value="IT">IT</option>
+                                <option value="MECH">MECH</option>
+                                <option value="EEE">EEE</option>
+                                <option value="CIVIL">CIVIL</option>
+                                <option value="ECE">ECE</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="college">College Name:</label>
+                            <!-- <input type="email" class="form-control" placeholder="Enter Collge Name" name="" id="collegename" required> -->
+                            <select name="College Name" class="form-control" ng-model='info.college'>
+                                <option value="">Select College</option>
+                                <option value="AEC">AEC</option>
+                                <option value="ACOE">ACOE</option>
+                                <option value="ACET">ACET</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="events">Events:</label>
+                            <!-- <input type="password" class="form-control" placeholder="example@gmail.com" name="" id="events" class="form-control" required> -->
+                            <select name="Events" class="form-control" ng-model='info.event' >
+                                <option value="">Select Event</option>
+                                <option value="Code Jam">Code Jam</option>
+                                <option value="Presentation">Presentation</option>
+                                <option value="Idea Expo">Idea Expo</option>
+                                <option value="Debate">Debate</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" placeholder="example@gmail.com" name="" id="email" required ng-model='info.email'>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" ng-click='postdata(info)'>Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    
+  <div class="text-center">
+    <p>MNP &copy; 2021- All Rights Reserved.</p>
+    </div
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

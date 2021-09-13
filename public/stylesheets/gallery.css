@@ -1,0 +1,11 @@
+.gallery img{
+	width: 330px;
+	height:250px;
+	box-shadow: 5px 5px 5px 5px #888888;
+	transition: transform .7s ease-in-out;
+}
+
+.gallery img:hover {
+  /*transform: rotate(180deg);*/
+  transform: scale(1.3);
+}

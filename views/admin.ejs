@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Admin Dashboard</title>
+  <link rel="icon"  href="/images/logo.png">
+  
+  <link rel="stylesheet"  type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <script src="https://use.fontawesome.com/4cace8263e.js"></script> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <!-- Bootstrap core CSS-->
+  <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+  <!-- Custom fonts for this template-->
+  <!-- <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Page level plugin CSS-->
+  <!-- <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet"> -->
+  <!-- Custom styles for this template-->
+  <!-- <link href="css/sb-admin.css" rel="stylesheet"> -->
+  <link rel='stylesheet' href='/stylesheets/admin.css' />
+  <script type="text/javascript" src="/javascripts/register.js"></script>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top" ng-app='myapp' ng-controller='mycontroller' >
+  <!-- Navigation-->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="#">Admin Dashboard</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="#">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="#student_data">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">Student details</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables" >
+          <a class="nav-link" href="#event_data" >
+            <i class="fa fa-laptop" ></i>
+            <span class="nav-link-text">Event details</span>
+          </a>
+        </li>
+      </ul>
+     
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Dashboard</a>
+            </li>
+        </ol>
+      <!-- Icon Cards
+      <div class="row text-center pb-2">
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body pb-5">
+              <div >Code Jam</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-warning o-hidden h-100">
+            <div class="card-body pb-5">
+              <div >Presentation</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-success o-hidden h-100">
+            <div class="card-body pb-5">
+              <div >Idea Expo</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-danger o-hidden h-100">
+            <div class="card-body pb-5">
+              <div>Debate</div>
+            </div>
+          </div>
+        </div>
+      </div>-->
+      
+      
+      
+      <!-- Example DataTables Card-->
+     <div class="card mb-3" ng-init="getdata()" id='student_data'>
+        <div class="card-header">
+          <i class="fa fa-table"></i> Event Registration Data</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>s1.No</th>
+                  <th>Name</th>
+                  <th>Rollno</th>
+                  <th>College</th>
+                  <th>Branch</th>
+                  <th>Events</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat='info in userinfo'>
+                  <td>{{$index + 1}}</td>
+                  <td>{{info.name}}</td>
+                  <td>{{info.rollno}}</td>
+                  <td>{{info.college}}</td>
+                  <td>{{info.branch}}</td>
+                  <td>{{info.event}}</td>
+                  <td>{{info.email}}</td>
+                  <td>
+                    <i  class="fa fa-pencil mr-3" style="color: blue;" data-toggle="modal" data-target="#myModal" ng-click="edit(info)"></i>
+                    <i  class="fa fa-trash-o" style="color: red;" ng-click="delete(info,$index)"></i>
+                  </td>
+                </tr>
+              </tbody>
+              
+            </table>
+          </div>
+        </div>
+      </div>
+        <a data-toggle="modal" data-target="#organizerModal">
+          <button class="m-2 btn btn-primary">Add Organizer</button>
+        </a>
+    </div>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        
+        <!-- Modal Content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title ">Update</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Name:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" ng-model="editData.name">
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="rollno">Rollno:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="rollno" placeholder="Enter Rollno" name="rollno"
+                      ng-model="editData.rollno">
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="college">College:</label>
+                  <div class="col-sm-10">
+                    <select name="College Name"  class="form-control" ng-model='editData.college'>
+                      <option value="">select college</option>
+                      <option value="AEC">AEC</option>
+                      <option value="ACOE">ACOE</option>
+                      <option value="ACET">ACET</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="branch">Branch:</label>
+                  <div class="col-sm-10">
+                    <select name="Branch" class="form-control" ng-model='editData.branch'>
+                      <option value="">Select Branch</option>
+                      <option value="CSE">CSE</option>
+                      <option value="IT">IT</option>
+                      <option value="MECH">MECH</option>
+                      <option value="EEE">EEE</option>
+                      <option value="CIVIL">CIVIL</option>
+                      <option value="ECE">ECE</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="event">Events:</label>
+                  <div class="col-sm-10">
+                    <select name="Events" class="form-control" ng-model='editData.event' >
+                      <option value="">Select Event</option>
+                      <option value="Code Jam">Code Jam</option>
+                      <option value="Presentation">Presentation</option>
+                      <option value="Idea Expo">Idea Expo</option>
+                      <option value="Debate">Debate</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control" id="email" placeholder="Enter Email" name="user.email" ng-model="editData.email">
+                  </div> 
+              </div> 
+              <center>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-success" data-dismiss="modal"ng-click="update(editData)">Update</button>
+                  </div>
+                </div>
+              </center>      
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3" ng-init="getcount()" id="event_data">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Event Registration Data</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>s1.No</th>
+                  <th>Event</th>
+                  <th>No.of students</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat='user in usercount'>
+                  <td>{{$index + 1}}</td>
+                  <td>{{user._id.event}}</td>
+                  <td>{{user.count}}</td>
+                </tr>
+              </tbody>
+              
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--organizer Modal -->
+    <div class="modal fade" id="organizerModal" role="dialog">
+      <div class="modal-dialog">
+        
+        <!-- Modal Content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title ">Organizer</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Name:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" ng-model="organizer.name">
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="rollno">Rollno:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="rollno" placeholder="Enter Rollno" name="rollno"
+                      ng-model="organizer.rollno">
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="college">College:</label>
+                  <div class="col-sm-10">
+                    <select name="College"  class="form-control" ng-model='organizer.college'>
+                      <option value="">Select College</option>
+                      <option value="AEC">AEC</option>
+                      <option value="ACOE">ACOE</option>
+                      <option value="ACET">ACET</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="branch">Branch:</label>
+                  <div class="col-sm-10">
+                    <select name="Branch" class="form-control" ng-model='organizer.branch'>
+                      <option value="">Select Branch</option>
+                      <option value="CSE">CSE</option>
+                      <option value="IT">IT</option>
+                      <option value="MECH">MECH</option>
+                      <option value="EEE">EEE</option>
+                      <option value="CIVIL">CIVIL</option>
+                      <option value="ECE">ECE</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="event">Events:</label>
+                  <div class="col-sm-10">
+                    <select name="Events" class="form-control" ng-model='organizer.event' >
+                      <option value="">Select Event</option>
+                      <option value="Code Jam">Code Jam</option>
+                      <option value="Presentation">Presentation</option>
+                      <option value="Idea Expo">Idea Expo</option>
+                      <option value="Debate">Debate</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control" id="email" placeholder="Enter Email" name="user.email" ng-model="organizer.email">
+                  </div> 
+              </div> 
+              <center>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-success" data-dismiss="modal"ng-click="data(organizer)">Add Organizer</button>
+                  </div>
+                </div>
+              </center>      
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <footer class="sticky-footer bg-dark">
+      <div class="container">
+        <div class="text-center" style="color: white;">
+          <small>MNP © All Rights Reserved </small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+
+h2{
+	font-size: 80px;
+	color: #003399;
+
+}
+
+
+
+
+
+.single_event img
+{
+	width: 240px;
+	height: 240px;
+
+}
+
+.single_event img:hover
+{
+	width: 250px;
+	height: 250px;
+
+}
+ 
+
+ .single_event
+ {
+ 	background-color: #cc99ff;
+ 	width: 270px;
+ 	height: 400px;
+ 	
+ 	margin: 35px;
+ 	border:2px solid #000000;
+
+ 	
+ }
+
+ .single_event h1
+ {
+ 	font-size: 30px;
+ 	color: #990099;
+ 	
+ }
+
+ .single_event h1:hover
+ {
+ 	font-size: 40px;
+ 	
+ }
+ 
+
